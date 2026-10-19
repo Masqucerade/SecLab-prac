@@ -34,6 +34,57 @@ Delay between request - задержка между запросами.
 Intercept (вручную) 
 <img width="1223" height="423" alt="image" src="https://github.com/user-attachments/assets/f403bca1-7f63-42b3-9fe3-badbbf19353d" />
 <img width="862" height="582" alt="image" src="https://github.com/user-attachments/assets/db829250-a527-471d-acfa-d313e80e8bdd" />.  
+Forward -> берп ловит ответ -> редактируем тело и заголовки -> Forward -> браузер получает измененное.  
+в Repeater - нельзя. Правится только запрос. Он шлет запрос напрямую и отдает ответ сервера.   
+
+Автоматически для всего трафика можно использовать Proxy -> Match and replace.   
+<img width="1236" height="466" alt="image" src="https://github.com/user-attachments/assets/8765f1ce-00f6-48c2-b194-cb1074d98747" />
+<img width="1051" height="324" alt="image" src="https://github.com/user-attachments/assets/f44cc0e1-430e-46f9-9a9f-e5e6e44e9c70" />
+Меняем например заголовки на лету.   
+
+### [ ] Как провести дирбастинг средствами Intruder?   
+Ловит гет, отправляем в Intruder, режим снайпера и в пути добавляем изменяющийся параметр
+<img width="379" height="191" alt="image" src="https://github.com/user-attachments/assets/f6b12757-a153-470b-88ba-97df35dda58e" />.  
+далее загружаем список дефолт директорий которые мы можем поперебирать.  
+<img width="496" height="367" alt="image" src="https://github.com/user-attachments/assets/bd05a46e-0a0e-440f-bd0b-e67babb53a44" />. 
+далее старт атаки и смотрим по коду (404 нет).  
+
+### [ ] Как провести брутфорс Basic Auth?    
+httpbin.org/basic-auth/user/passwd попробуем на этом.  
+После ввода в логин и пароль 1 и 1 к нам в берп прилетает это   
+<img width="659" height="486" alt="image" src="https://github.com/user-attachments/assets/b18d0e58-1b67-4f00-b11d-b292da004d13" />.   
+видим Authorization: Basic MTox.   отправляем в Intruder     
+выделяем пейлоад
+<img width="448" height="135" alt="image" src="https://github.com/user-attachments/assets/ff3c3d40-926b-427a-942d-086e895ce361" />
+и далее добавляем пары и кодируем    
+<img width="410" height="146" alt="image" src="https://github.com/user-attachments/assets/16f0ce25-fff1-4d33-b508-6b564ed5557e" />
+<img width="592" height="403" alt="image" src="https://github.com/user-attachments/assets/76c3b5fb-6a3d-4c7a-ae8a-ade3a5e9ed83" />
+<img width="608" height="372" alt="image" src="https://github.com/user-attachments/assets/7be06653-93a7-4142-af9c-da6079a1dbd6" />
+<img width="509" height="389" alt="image" src="https://github.com/user-attachments/assets/1fc6d4c8-5db5-4b6d-8b15-6bbe9fe17057" />|
+и получаем 200 на user:passwd
+<img width="1512" height="968" alt="image" src="https://github.com/user-attachments/assets/361114d5-d2f7-4ad5-9db7-59fda74459f4" />
+
+### [ ] Что такое Organizer?    
+органайзер - просто хранилище отправленных туда нужных запросов. 
+отправляется также Send to Organaizer.  
+хранит запрос и ответ отдельно не зависимо от http history.   
+
+### [ ] Представьте, что на проекте Вам нужно анализировать трафик десктопного приложения. Обычно мы в таких случаях просто указываем адрес прокси 127.0.0.1:8080, на котором слушает Burp Suite, но в этот раз подобное не получится -- приложение не имеет настройки прокси и игнорирует системные, т.е. указать прокси для него никак не получится. При это известно (например, по анализу трафика в wireshark), что приложение все запросы отправляет на https://example.com. Как пустить трафик через Burp?
+  * [ ] Для простоты вместо десктопного приложения все-таки возьмем браузер, но запрещено как-либо настраивать для него прокси, также запрещено менять системные настройки прокси. В браузере посещается адрес https://example.com, и этот запрос (как и ответ на него) должен быть виден в Burp -\> Proxy -\> HTTP History.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
