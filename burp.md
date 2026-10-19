@@ -13,7 +13,6 @@ Proxy -> HTTP history -> Filter.
 ### [ ] Как организовать зоопарк вкладок в Repeater?  
 <img width="952" height="192" alt="telegram-cloud-photo-size-2-5384504455396531299-y" src="https://github.com/user-attachments/assets/3f2e7ac2-e627-4d99-b60d-5aecb7514599" />
 <img width="870" height="926" alt="telegram-cloud-photo-size-2-5384504455396531297-y" src="https://github.com/user-attachments/assets/c3c57a2c-5643-4933-aac1-0216fa83e0cb" />.  
-***
 ### [ ] Какие виды атак есть в Intruder?  
 Всего 4 типа атак. 
 Sniper - тыкает по 1 параметру на 1 место (a,_), (_,a), (b,_), (_,b).   
