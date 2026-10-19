@@ -21,6 +21,24 @@ Battering ram - одно значение на все позиции (a,a), (b,b
 Pitchfork - известные пары (например логин+пароль) на свои места login1:pass1, login2:pass2     
 cluster bomb - все комбинации (a,a), (a,b), (b,a), (b,b).   
 <img width="932" height="295" alt="image" src="https://github.com/user-attachments/assets/7f94c3d3-6391-4d10-a773-0b9df7f6536d" />
+<img width="502" height="293" alt="image" src="https://github.com/user-attachments/assets/be7c784c-3fc7-4466-9431-61d2279f6bd3" />
+сюда добавляются готовые или произвольные списки с датой   
+
+### [ ] Как контролировать RPS при атаках Intruder?   
+settings -> recource pool.  
+Maximum concured request - сколько максимально одновременных запросов.  
+Delay between request - задержка между запросами.  
+<img width="512" height="925" alt="image" src="https://github.com/user-attachments/assets/8b7d89ad-4c7a-4c80-8e48-c75f6e16b579" />.  
+
+*** [ ] Как подменить ответ сервера на запрос из Intercepter? Repeater? А как автоматически подменять ответы для живого трафика?   
+Intercept (вручную) 
+<img width="1223" height="423" alt="image" src="https://github.com/user-attachments/assets/f403bca1-7f63-42b3-9fe3-badbbf19353d" />
+<img width="862" height="582" alt="image" src="https://github.com/user-attachments/assets/db829250-a527-471d-acfa-d313e80e8bdd" />.  
+
+
+
+
+
 
 
 
