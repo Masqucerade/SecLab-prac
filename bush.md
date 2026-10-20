@@ -44,6 +44,14 @@ Host: 127.0.0.1:1235 \
 User-Agent: curl/8.7.1 \
 Accept: */* \
 1:2 \
+### [ ] Послать через nc валидный http-запрос, чтобы example.com ответил таким же html, как при запросе курлом.    
+тк у меня не выходит просто в сессии с помощью вставки сделать запрос (обрывается будто), то загуглив я увидел такое моментальное: \
+`{ printf 'GET / HTTP/1.1\nHost: example.com\n\n'; sleep 5; } | nc example.com 80 ` \
+<img width="586" height="396" alt="image" src="https://github.com/user-attachments/assets/5a3e3c02-b022-4921-9bf3-00608072171d" />    
+и с курлом.   
+<img width="615" height="156" alt="image" src="https://github.com/user-attachments/assets/da2a68b7-bec5-4570-801e-9ba6a45ae1b5" />.   
+
+
 
 
 
