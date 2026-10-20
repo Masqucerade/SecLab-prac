@@ -43,30 +43,34 @@ GET / HTTP/1.1 \
 Host: 127.0.0.1:1235 \
 User-Agent: curl/8.7.1 \
 Accept: */* \
-1:2 \
+1:2 \.    
+
 ### [ ] Послать через nc валидный http-запрос, чтобы example.com ответил таким же html, как при запросе курлом.    
 тк у меня не выходит просто в сессии с помощью вставки сделать запрос (обрывается будто), то загуглив я увидел такое моментальное: \
 `{ printf 'GET / HTTP/1.1\nHost: example.com\n\n'; sleep 5; } | nc example.com 80 ` \
 <img width="586" height="396" alt="image" src="https://github.com/user-attachments/assets/5a3e3c02-b022-4921-9bf3-00608072171d" />    
 и с курлом.   
-<img width="615" height="156" alt="image" src="https://github.com/user-attachments/assets/da2a68b7-bec5-4570-801e-9ba6a45ae1b5" />.   
+<img width="615" height="156" alt="image" src="https://github.com/user-attachments/assets/da2a68b7-bec5-4570-801e-9ba6a45ae1b5" />.    
+
 ### Команды для UDP.   
 <img width="452" height="266" alt="image" src="https://github.com/user-attachments/assets/5cfd5038-7d9f-4967-b2d4-22e5761c0388" />.  
 тоже самое но с флагом `-u` udp \
 `nc -u -l 1236` \
 `nc -u 127.0.0.1 1236` \
 ну также для новых портов я сделал и `netstat -an | grep 1236` \ 
-<img width="510" height="73" alt="image" src="https://github.com/user-attachments/assets/4d6715f3-d135-4bfb-819d-0b7a79bfcd95" />
+<img width="510" height="73" alt="image" src="https://github.com/user-attachments/assets/4d6715f3-d135-4bfb-819d-0b7a79bfcd95" />.    
+
 ### [ ] Пустить запрос из curl на https://example.com через Burp.   
 запустим берп, по умолчанию он на 127.0.0.1:8080 \
 и сделаем `curl -x http://127.0.0.1:8080 -k https://example.com` \
 -x ... = proxy \
 -k = не проверять сертификат \
-<img width="586" height="151" alt="image" src="https://github.com/user-attachments/assets/3aef5101-505c-4eb3-aa03-e8be1f6ba411" />
-<img width="1512" height="208" alt="image" src="https://github.com/user-attachments/assets/ffbb0a31-b798-42be-a122-80a59ed0205a" />
-<img width="1512" height="501" alt="image" src="https://github.com/user-attachments/assets/69e311c3-ef58-4d9b-97c2-f8d7fc6f4b0c" />
+<img width="586" height="151" alt="image" src="https://github.com/user-attachments/assets/3aef5101-505c-4eb3-aa03-e8be1f6ba411" />.    
+<img width="1512" height="208" alt="image" src="https://github.com/user-attachments/assets/ffbb0a31-b798-42be-a122-80a59ed0205a" />.   
+<img width="1512" height="501" alt="image" src="https://github.com/user-attachments/assets/69e311c3-ef58-4d9b-97c2-f8d7fc6f4b0c" />.   
+
 ### [ ] [live] С помощью grep (вероятно, нескольких зачейненных вызовов, но вся команда должна быть однострочником) в файлах директории /var/log и всех ее поддиректорий:    
-### [ ] найти все вхождения IP-адресов.  
+### [ ] найти все вхождения IP-адресов.    
 для `grep` будем искать IP адреса по папкам \
 `grep -rhoE` : \
 r - рекурсивно \
@@ -74,26 +78,31 @@ h - не печатать имя файла \
 o - вывести только совпавшую строку а не все \
 E - extended расширенные регулярки, далее их и используем : \
 `grep -rhoE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' /var/log ` \
+
 ### [ ] отбросить адреса из подсети 10.0.0.0/8.   
 добавить в нашу команду `grep -rhoE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' /var/log ` \
 `grep -rhoE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' /var/log | grep -v '^10\.'` \
 -v = инверсия \
 ^ - начало строки \
+
 ### * [ ] вывести
 ###    * [ ] всю строку, содержащую эти адреса
 Просто уберем флаг и увидим фулл строку \
 `grep -rhE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' /var/log ` \
-<img width="568" height="403" alt="image" src="https://github.com/user-attachments/assets/e41d81db-ad9f-4351-a5b2-2af2d4c475b6" />
+<img width="568" height="403" alt="image" src="https://github.com/user-attachments/assets/e41d81db-ad9f-4351-a5b2-2af2d4c475b6" />.    
+
 ###    * [ ] строку, содержащую адрес, одну строку выше и одну ниже
 добавим флаг C1 (Context 1) который сверху и снизу по одной строке отдаст \
 есть еще афтер/бефор соотвественно A1, B1, что в связке эквивалентно C1 \
-`grep -rhEC1 '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' /var/log `
+`grep -rhEC1 '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' /var/log ` \
+
 ###    * [ ] только сам адрес, итоговый список адресов дедуплицировать  
 добавим обратное только IP (-o) \
 тк просто флаг -u (уникальные) убирает совпадения соседних, то можефицируем \
 сортировка + уник = полностью упорядоченный без повторений (рекурсивно уберет лишнее) \
 `grep -rhoE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' /var/log | sort -u`
-<img width="603" height="478" alt="image" src="https://github.com/user-attachments/assets/23c472ca-ed44-498b-babf-33c3985762be" />
+<img width="603" height="478" alt="image" src="https://github.com/user-attachments/assets/23c472ca-ed44-498b-babf-33c3985762be" />.    
+
 ### * [ ] заглушить при этом ошибки (permission denied и другие) 
 тк grep перенаправляет все в одно окно терминала и cout and error (1,2), то: \
 перенаправим из stderr (2) в пустоту все: \
